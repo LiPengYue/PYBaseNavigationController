@@ -6,14 +6,14 @@
 //  Copyright © 2018年 13lipengyue. All rights reserved.
 //
 
-#import "BaseNavigationController.h"
+#import "PYBaseNavigationController.h"
 
-@interface BaseNavigationController ()
+@interface PYBaseNavigationController ()
 /// interictave
 @property (nonatomic,strong) NSArray <Class>*closeInteractivePopClassArray;
 @end
 
-@implementation BaseNavigationController
+@implementation PYBaseNavigationController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -21,7 +21,7 @@
 }
 
 - (void) setupDelegate {
-    __weak BaseNavigationController *weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.interactivePopGestureRecognizer.delegate = weakSelf;
         self.delegate = weakSelf;

@@ -6,7 +6,7 @@
 //  Copyright © 2018年 13lipengyue. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "PYBaseViewController.h"
 
 #ifdef DEBUG
 #    define DLog(...) NSLog(__VA_ARGS__)
@@ -14,10 +14,10 @@
 #    define DLog(...)
 #endif
 
-@interface BaseViewController ()
+@interface PYBaseViewController ()
 @end
 
-@implementation BaseViewController
+@implementation PYBaseViewController
 
 // MARK: systom functions
 - (void)viewDidLoad {
@@ -99,9 +99,9 @@
 }
 
 
-- (BaseNavigationBarView *)navBarView {
+- (PYBaseNavigationBarView *)navBarView {
     if (!_navBarView) {
-        _navBarView = [BaseNavigationBarView new];
+        _navBarView = [PYBaseNavigationBarView new];
     }
     return _navBarView;
 }

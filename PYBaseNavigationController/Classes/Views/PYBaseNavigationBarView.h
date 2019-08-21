@@ -12,14 +12,14 @@
 typedef void(^ClickNavTitle)(UIButton *button);
 typedef void(^CliekNavItem)(UIButton *button,NSInteger index);
 
-@interface BaseNavigationBarView : UIView
+@interface PYBaseNavigationBarView : UIView
 
 /**
  刷新UI
  */
 - (void) reloadView;
 
-- (void) setUpWeakSelfFunc: (void(^)(BaseNavigationBarView *weak))block;
+- (void) setUpWeakSelfFunc: (void(^)(PYBaseNavigationBarView *weak))block;
 
 /** 左边的buttons */
 @property (nonatomic,strong,readonly) NSArray <UIButton *>*leftItems;
@@ -32,29 +32,29 @@ typedef void(^CliekNavItem)(UIButton *button,NSInteger index);
 @property (nonatomic,strong) UIButton *titleButton;
 
 #pragma mark - 插入item
-- (BaseNavigationBarView *(^)(UIButton *button)) addLeftItem;
-- (BaseNavigationBarView *(^)(UIButton *button)) addRightItem;
+- (PYBaseNavigationBarView *(^)(UIButton *button)) addLeftItem;
+- (PYBaseNavigationBarView *(^)(UIButton *button)) addRightItem;
 
 // MARK: 根据 str 与 image 创建Button 并添加到数组
-- (BaseNavigationBarView *(^)(NSString *str,UIImage *image)) addLeftItemWithTitleAndImg;
-- (BaseNavigationBarView *(^)(NSString *str,UIImage *image)) addRightItemWithTitleAndImg;
-- (BaseNavigationBarView *(^)(NSString *str,UIImage *image)) addTitleItemWithTitleAndImg;
+- (PYBaseNavigationBarView *(^)(NSString *str,UIImage *image)) addLeftItemWithTitleAndImg;
+- (PYBaseNavigationBarView *(^)(NSString *str,UIImage *image)) addRightItemWithTitleAndImg;
+- (PYBaseNavigationBarView *(^)(NSString *str,UIImage *image)) addTitleItemWithTitleAndImg;
 
 // MARK: 根据 attributedStr 创建button 并添加到数组
-- (BaseNavigationBarView *(^)(NSAttributedString *str)) addLeftItemWithAttributedStr;
-- (BaseNavigationBarView *(^)(NSAttributedString *str)) addRightItemWithAttributedStr;
-- (BaseNavigationBarView *(^)(NSAttributedString *str)) addTitleItemWithAttributedStr;
+- (PYBaseNavigationBarView *(^)(NSAttributedString *str)) addLeftItemWithAttributedStr;
+- (PYBaseNavigationBarView *(^)(NSAttributedString *str)) addRightItemWithAttributedStr;
+- (PYBaseNavigationBarView *(^)(NSAttributedString *str)) addTitleItemWithAttributedStr;
 
 
-- (BaseNavigationBarView *) insertLeftItem: (UIButton *)button
+- (PYBaseNavigationBarView *) insertLeftItem: (UIButton *)button
                                     andIndex: (NSInteger)index;
-- (BaseNavigationBarView *) insertRightItem: (UIButton *)button
+- (PYBaseNavigationBarView *) insertRightItem: (UIButton *)button
                                      andIndex: (NSInteger)index;
 
-- (BaseNavigationBarView *) removeLeftItemWithIndex: (NSInteger) index;
-- (BaseNavigationBarView *) removeRightItemWithIndex: (NSInteger) index;
-- (BaseNavigationBarView *) removeLeftAll;
-- (BaseNavigationBarView *) removeRightAll;
+- (PYBaseNavigationBarView *) removeLeftItemWithIndex: (NSInteger) index;
+- (PYBaseNavigationBarView *) removeRightItemWithIndex: (NSInteger) index;
+- (PYBaseNavigationBarView *) removeLeftAll;
+- (PYBaseNavigationBarView *) removeRightAll;
 
 #pragma mark - 点击事件
 /** 点击了左边的按钮 */

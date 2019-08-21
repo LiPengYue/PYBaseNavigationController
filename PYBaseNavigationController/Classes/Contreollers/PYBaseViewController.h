@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseNavigationBarView.h"
+#import "PYBaseNavigationBarView.h"
+#import "PYBaseNavigationController.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BaseViewController : UIViewController
+@interface PYBaseViewController : UIViewController
 
-@property (nonatomic,strong) BaseNavigationBarView *navBarView;
+@property (nonatomic,strong) PYBaseNavigationBarView *navBarView;
 /// 是否穿透translucent
 @property (nonatomic,assign) BOOL isTranslucent;
 

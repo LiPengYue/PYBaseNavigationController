@@ -1,14 +1,14 @@
 //
-//  BaseNavigationBarView.m
+//  PYBaseNavigationBarView.m
 //  PYKit_Example
 //
 //  Created by 李鹏跃 on 2018/10/26.
 //  Copyright © 2018年 LiPengYue. All rights reserved.
 //
 
-#import "BaseNavigationBarView.h"
+#import "PYBaseNavigationBarView.h"
 
-@interface BaseNavigationBarView ()
+@interface PYBaseNavigationBarView ()
 @property (nonatomic,strong) UIView *backgroundView;
 @property (nonatomic,copy) ClickNavTitle clickTitleButton;
 @property (nonatomic,copy) CliekNavItem clickRightItem;
@@ -24,10 +24,10 @@
 @property (nonatomic,assign) BOOL isFirstLayout;
 @end
 
-@implementation BaseNavigationBarView
+@implementation PYBaseNavigationBarView
 @synthesize titleButton = _titleButton;
 
-- (void) setUpWeakSelfFunc: (void(^)(BaseNavigationBarView *weak))block {
+- (void) setUpWeakSelfFunc: (void(^)(PYBaseNavigationBarView *weak))block {
     __weak typeof(self)weakSelf = self;
     if (block) {
         block(weakSelf);
@@ -619,18 +619,18 @@
 
 
 // MARK: ther func
-- (BaseNavigationBarView *(^)(UIButton *button)) addLeftItem {
+- (PYBaseNavigationBarView *(^)(UIButton *button)) addLeftItem {
     return ^(UIButton *button) {
         NSInteger idx = self.leftItemsM.count;
-        [self setUpWeakSelfFunc:^(BaseNavigationBarView *weak) {
+        [self setUpWeakSelfFunc:^(PYBaseNavigationBarView *weak) {
             [weak insertLeftItem:button andIndex:idx];
         }];
         return self;
     };
 }
-- (BaseNavigationBarView *(^)(UIButton *button)) addRightItem {
+- (PYBaseNavigationBarView *(^)(UIButton *button)) addRightItem {
     return ^(UIButton *button) {
-        [self setUpWeakSelfFunc:^(BaseNavigationBarView *weak) {
+        [self setUpWeakSelfFunc:^(PYBaseNavigationBarView *weak) {
             NSInteger idx = weak.rightItemsM.count;
             [weak insertRightItem:button andIndex:idx];
         }];
@@ -639,30 +639,30 @@
     };
 }
 
-- (BaseNavigationBarView *(^)(NSString *str,UIImage *image)) addLeftItemWithTitleAndImg {
+- (PYBaseNavigationBarView *(^)(NSString *str,UIImage *image)) addLeftItemWithTitleAndImg {
     return ^(NSString *str, UIImage *image) {
         UIButton *button = [UIButton new];
         [button setImage:image forState:UIControlStateNormal];
         [button setTitle:str forState:UIControlStateNormal];
-        [self setUpWeakSelfFunc:^(BaseNavigationBarView *weak) {
+        [self setUpWeakSelfFunc:^(PYBaseNavigationBarView *weak) {
             weak.addLeftItem(button);
         }];
         return self;
     };
 }
-- (BaseNavigationBarView *(^)(NSString *str,UIImage *image)) addRightItemWithTitleAndImg {
+- (PYBaseNavigationBarView *(^)(NSString *str,UIImage *image)) addRightItemWithTitleAndImg {
     return ^(NSString *str, UIImage *image) {
         UIButton *button = [[UIButton alloc] init];;
         button.userInteractionEnabled = true;
         [button setImage:image forState:UIControlStateNormal];
         [button setTitle:str forState:UIControlStateNormal];
-        [self setUpWeakSelfFunc:^(BaseNavigationBarView *weak) {
+        [self setUpWeakSelfFunc:^(PYBaseNavigationBarView *weak) {
             weak.addRightItem(button);
         }];
         return self;
     };
 }
-- (BaseNavigationBarView *(^)(NSString *str,UIImage *image)) addTitleItemWithTitleAndImg {
+- (PYBaseNavigationBarView *(^)(NSString *str,UIImage *image)) addTitleItemWithTitleAndImg {
     return ^(NSString *str, UIImage *image) {
         UIButton *button = [[UIButton alloc] init];;
         button.userInteractionEnabled = true;
@@ -678,29 +678,29 @@
     };
 }
 
-- (BaseNavigationBarView *(^)(NSAttributedString *str)) addLeftItemWithAttributedStr {
+- (PYBaseNavigationBarView *(^)(NSAttributedString *str)) addLeftItemWithAttributedStr {
     return ^(NSAttributedString *str) {
         UIButton *button = [[UIButton alloc] init];;
         button.userInteractionEnabled = true;
         [button setAttributedTitle:str forState:UIControlStateNormal];
-        [self setUpWeakSelfFunc:^(BaseNavigationBarView *weak) {
+        [self setUpWeakSelfFunc:^(PYBaseNavigationBarView *weak) {
             weak.addLeftItem(button);
         }];
         return self;
     };
 }
-- (BaseNavigationBarView *(^)(NSAttributedString *str)) addRightItemWithAttributedStr {
+- (PYBaseNavigationBarView *(^)(NSAttributedString *str)) addRightItemWithAttributedStr {
     return ^(NSAttributedString *str) {
         UIButton *button = [[UIButton alloc] init];
         button.userInteractionEnabled = true;
         [button setAttributedTitle:str forState:UIControlStateNormal];
-        [self setUpWeakSelfFunc:^(BaseNavigationBarView *weak) {
+        [self setUpWeakSelfFunc:^(PYBaseNavigationBarView *weak) {
             weak.addRightItem(button);
         }];
         return self;
     };
 }
-- (BaseNavigationBarView *(^)(NSAttributedString *str)) addTitleItemWithAttributedStr {
+- (PYBaseNavigationBarView *(^)(NSAttributedString *str)) addTitleItemWithAttributedStr {
     return ^(NSAttributedString *str) {
         UIButton *button = [[UIButton alloc] init];;
         button.userInteractionEnabled = true;
@@ -713,7 +713,7 @@
     };
 }
 
-- (BaseNavigationBarView *) insertLeftItem: (UIButton *)button andIndex: (NSInteger)index {
+- (PYBaseNavigationBarView *) insertLeftItem: (UIButton *)button andIndex: (NSInteger)index {
     
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
@@ -727,7 +727,7 @@
     dispatch_semaphore_signal(semaphore);
     return self;
 }
-- (BaseNavigationBarView *) insertRightItem: (UIButton *)button  andIndex: (NSInteger)index {
+- (PYBaseNavigationBarView *) insertRightItem: (UIButton *)button  andIndex: (NSInteger)index {
     
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
@@ -741,19 +741,19 @@
     dispatch_semaphore_signal(semaphore);
     return self;
 }
-- (BaseNavigationBarView *) removeLeftItemWithIndex: (NSInteger) index {
+- (PYBaseNavigationBarView *) removeLeftItemWithIndex: (NSInteger) index {
     [self.leftItemsM removeObjectAtIndex:index];
     return self;
 }
-- (BaseNavigationBarView *) removeRightItemWithIndex: (NSInteger) index {
+- (PYBaseNavigationBarView *) removeRightItemWithIndex: (NSInteger) index {
     [self.rightItemsM removeObjectAtIndex:index];
     return self;
 }
-- (BaseNavigationBarView *) removeLeftAll {
+- (PYBaseNavigationBarView *) removeLeftAll {
     [self.leftItemsM removeAllObjects];
     return self;
 }
-- (BaseNavigationBarView *) removeRightAll {
+- (PYBaseNavigationBarView *) removeRightAll {
     [self.rightItemsM removeAllObjects];
     return self;
 }
