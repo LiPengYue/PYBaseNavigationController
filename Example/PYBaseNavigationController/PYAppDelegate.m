@@ -7,7 +7,7 @@
 //
 
 #import "PYAppDelegate.h"
-
+#import <PYBaseNavigationController/PYBaseNavigationController.h>
 @implementation PYAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
